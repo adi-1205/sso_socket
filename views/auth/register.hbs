@@ -1,0 +1,43 @@
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+    <div class="container shadow px-0 rounded-3">
+        <div class="auth-wrapper d-flex">
+            <div class="auth-image w-75">
+                <div class="auth-overlay"></div>
+                <img src="/images/auth-image.jpg" alt="" class="img-fluid rounded-start">
+            </div>
+            <div class="auth-form w-50 p-3 d-flex flex-column align-items-center">
+                <h2 class="text-center mb-3 mt-4">Create account</h2>
+                <div class="mb-3 w-75">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="username" class="form-control" id="username" aria-describedby="username-help"
+                        placeholder="Username...">
+                </div>
+                <div class="mb-3 w-75">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="email-help"
+                        placeholder="Email...">
+                </div>
+                <div class="w-75">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" aria-describedby="show-password"
+                            placeholder="Password..." id="password">
+                        <button class="btn btn-white border fw-bold" id="show-password">show</button>
+                    </div>
+                </div>
+                <div id="form-help" class="form-text text-danger mb-3 w-75 text-start"></div>
+                <div class="w-75 mb-5">
+                    <button class="btn btn-dark w-100 p-2" id="register-btn">Create account
+                        <div class="spinner-border spinner-border-sm text-light" role="status" id="loading"></div>
+                    </button>
+                </div>
+                <div class=" d-flex justify-content-center w-75 mb-3">
+                    <a href="">Already have an account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{> assets/common}}
+<script src="/javascripts/script.js"></script>

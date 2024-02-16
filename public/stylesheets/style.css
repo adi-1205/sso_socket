@@ -1,0 +1,203 @@
+.hr {
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.235);
+    width: 75%;
+}
+
+.auth-image {
+    position: relative;
+}
+
+.auth-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.16);
+}
+
+#loading {
+    display: none;
+}
+
+.form-text {
+    display: none;
+}
+
+.auth-image>img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.message .message-text {
+    display: inline-block;
+    max-width: 70% !important;
+    padding: .5em 1em;
+    border-radius: 3px;
+}
+
+.message {
+    position: relative;
+}
+/* .message-area-wrapper{
+    position: relative;
+    z-index: 1;
+} */
+/* .message-area-wrapper .card-header{
+    z-index: 2;
+}
+.background{
+    position: absolute;
+    overflow: hidden;
+    z-index: 0;
+}
+.background .overlay{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.457);
+}
+.background img{
+    width: 100%;
+    object-fit: cover;
+} */
+.message-area {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    padding: 2em;
+}
+
+.other {
+    text-align: left;
+}
+
+.me {
+    text-align: right;
+}
+.message .message-time{
+    position: absolute;
+    color: rgb(255, 255, 255);
+    bottom: -15px;
+    padding: 0 5px;
+    font-size: 11px;
+}
+.other .message-time{
+    left: 0px;
+}
+.me .message-time{
+    right: 0px;
+}
+
+.other .message-text {
+    background-color: rgb(42, 40, 40);
+    color: rgb(240, 240, 240);
+    border-bottom-left-radius: 0px !important;
+}
+
+.me .message-text {
+    background: rgb(177, 177, 177);
+    color: rgb(9, 9, 9);
+    border-bottom-right-radius: 0px !important;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.347);
+    border-radius: 50%;
+    margin: 0 5px;
+    position: relative;
+    bottom: -5px;
+    animation: dotty 1000ms infinite alternate ease-in-out;
+}
+
+.dot:nth-child(1) {
+    animation-delay: 100ms;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 200ms;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 300ms;
+}
+
+.danger-inp:focus {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 0.25rem #dc354536 !important;
+}
+
+@keyframes dotty {
+    0% {
+        bottom: 5px;
+        background: rgba(0, 0, 0, 0.779);
+    }
+
+    40% {}
+
+    80% {
+        bottom: -5px;
+        background: rgba(0, 0, 0, 0.347);
+    }
+
+    100% {
+        bottom: -5px;
+        background: rgba(0, 0, 0, 0.347);
+    }
+}
+
+.page-item:not(.disabled) .page-link {
+    color: #24282c !important;
+}
+
+.page-item a:focus {
+    box-shadow: none;
+    border: none;
+}
+
+.page-item.active .page-link {
+    background-color: #24282c !important;
+    color: #dbdbdb !important;
+    border: none;
+}
+
+.fit {
+    width: 1px;
+    white-space: nowrap;
+}
+
+.copy-access-code {
+    cursor: pointer;
+}
+
+#msg:focus{
+    box-shadow: none !important;
+}
+#send-msg {
+    border-bottom-right-radius: 3px !important;
+}
+#send-msg:focus{
+    box-shadow: none;
+}
+.online-user{
+    box-shadow: 0px 0px 4px  rgba(0, 0, 0, 0.477);
+}
+.online-user-list {
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+*::-webkit-scrollbar {
+    background: white;
+    width: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: rgb(78, 78, 78);
+    width: 10px;
+}

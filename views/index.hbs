@@ -1,0 +1,45 @@
+{{> nav}}
+
+<div class="container" style="margin-top: 7em; margin-bottom: 5em;">
+    <div class="row">
+        <div class="col-md-6 mt-4 d-flex flex-column justify-content-center pe-3">
+            {{!-- <div class="display-2 fw-bold mb-4">Chat Application Landing Page</div> --}}
+            <div class="display-4 fw-bold mb-4"><span class="display-5">Got a babble  to share? </span><br>
+                We Got a Platform !</div>
+            <p style="font-size: 1.13em;" class="mb-4">Connect with your friends and family through easy-to-use chat
+                application.
+                Stay in touch where ever you
+                are.</p>
+            <div>
+                {{#if isAuth}}
+                <a class="btn btn-danger rounded-pill fs-5 px-4">Create Room</a>
+                {{else}}
+                <a class="btn btn-danger rounded-pill fs-5 px-4">Register now</a>
+                {{/if}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <img src="https://images.unsplash.com/photo-1485182708500-e8f1f318ba72?q=80&w=1820&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="" class="img-fluid">
+        </div>
+    </div>
+</div>
+<div class="container-fluid bg-dark text-light text-center fs-5 p-3">
+    Welcome to our ChitChat app!
+</div>
+<div class="container" style="margin-top: 7em; margin-bottom: 5em;">
+    <div class="row">
+        <div class="col-md-4 d-flex flex-column justify-content-center align-items-center bg-dark">
+            <div class="display-5  mb-4 text-white">ChitChat</div>
+            <div class="display-4 text-warning text-center fw-bold mb-5">Connect and Chat with ease.</div>
+            <div style="height: 2px; border: solid 2px white; width: 50%;" class="mb-5"></div>
+            <div class="display-6  mb-4 text-white text-center">CREATE, JOIN, CHAT <br>IT'S THAT SIMPLE</div>
+        </div>
+        <div class="col-md-8 p-0">
+            <img src="/images/cats.jpg" alt="" class="img-fluid">
+        </div>
+    </div>
+</div>
+
+{{> assets/common}}
+<script src="/javascripts/script.js"></script>

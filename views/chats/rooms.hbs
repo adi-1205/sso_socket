@@ -1,0 +1,57 @@
+{{> nav}}
+
+<div class="container-fluid bg-light p-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <p class="m-0" style="user-select: none;">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </p>
+        <p class="m-0 fs-4" style="user-select: none;">Take a virtual tour of the friends life update!</p>
+        <button class="btn btn-danger rounded-pill text-nowrap" id="open-create-room-form-btn">
+            <i class="fa-solid fa-angle-down" data-arrow="down"></i> Create Room
+        </button>
+    </div>
+    <div class="mt-3 create-room-form" style="display: none;">
+        <input type="text" class="form-control danger-inp " placeholder="Room name..." id="create-room-name-inp">
+        <p style="display: none;" class="text-danger fs-6 m-0 room-name-error"></p>
+        <p style="display: none;" class="text-success fs-6 m-0 room-name-success"></p>
+        <button class="btn btn-danger rounded-pill mt-2" id="create-room-btn">
+            <i class="fa-solid fa-circle-check"></i>
+            CREATE
+        </button>
+    </div>
+</div>
+
+<div class="container-fluid d-flex justify-content-between align-items-center border p-3">
+    <p class="m-0 mx-3 mb-2 text-nowrap" style="user-select: none;">Join an existing room with Access code or Create a
+        new
+        Room</p>
+    <input type="text " class="form-control mx-3 danger-inp" placeholder="Enter access code here">
+    <button class="btn btn-outline-danger text-nowrap"><i class="fa-solid fa-arrow-right-to-bracket"></i> Join
+        Room</button>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Room name</th>
+                <th scope="col">Access Code</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        {{> chats/room-list count=count rooms=rooms}}
+    </table>
+
+    <div id="pagination-area">
+
+    </div>
+
+</div>
+
+{{> assets/common}}
+<script src="https://kit.fontawesome.com/116f2e8725.js" crossorigin="anonymous"></script>
+<script src="/javascripts/pagination.full.min.js"></script>
+<script src="/javascripts/script.js"></script>

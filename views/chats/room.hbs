@@ -1,0 +1,95 @@
+{{> nav}}
+<div class="container p-1 mt-4" style="height: 80vh;">
+    <div class="row h-100">
+        <div class="col-md-3 h-100 p-0">
+            <div class="card h-100 rounded-start">
+                <div class="card-header bg-dark text-white">
+                    <h3 class="text-center"><i class="fa-regular fa-comments"></i> active</h3>
+                </div>
+                <div class="card-body online-user-list bg-light">
+                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
+                        Aditya
+                    </div>
+                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
+                        Aditya
+                    </div>
+                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
+                        Aditya
+                    </div>
+                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
+                        Aditya
+                    </div>
+                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
+                        Aditya
+                    </div>
+                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
+                        Aditya
+                    </div>
+                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
+                        Aditya
+                    </div>
+                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
+                        Aditya
+                    </div>
+                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
+                        Aditya
+                    </div>
+                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
+                        Aditya
+                    </div>
+                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
+                        Aditya
+                    </div>
+                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
+                        Aditya
+                    </div>
+                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
+                        Aditya
+                    </div>
+                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
+                        Aditya
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-9 h-100 p-0">
+            <div class="card h-100 border overflow-hidden message-area-wrapper">
+                <div class="card-header bg-dark text-white">
+                    <h3 class="fw-normal">Room: {{access}}</h3>
+                </div>
+                {{!-- <div class="background">
+                    <img src="/images/chat-back-2.jpg" alt="">
+                    <div class="overlay"></div>
+                </div> --}}
+                <div class="card-body message-area bg-light">
+
+                    <div class="messages">
+                        <p class="message other">
+                            <span class="message-text">
+                                illum hic quidem.
+                            </span>
+                            <span class="message-time">20:03</span>
+                        </p>
+                        <p class="message me">
+                            <span class="text-start message-text">
+                                heyy, doing great
+                            </span>
+                            <span class="message-time">22:30</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="card-footer bg-white border-0 p-0">
+                    <div class="input-group">
+                        <input type="text" class="form-control rounded-0 danger-inp" id="msg" rows="1">
+                        <button class="input-group-text btn bg-primary-subtle btn-lg rounded-0" id="send-msg">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://kit.fontawesome.com/116f2e8725.js" crossorigin="anonymous"></script>
+{{> assets/common}}
+{{> assets/socket}}

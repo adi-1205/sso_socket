@@ -1,0 +1,24 @@
+AUTH
+--------
++ login
++ register
++ google auth
++ jwt auth
++ protected route
+
+
+CHATROOM
+----------
+display created rooms
+create room
+join room
+
+
+CHAT
+--------
+persistant chat
+image/text sharing
+display online users in room
+
+
+
