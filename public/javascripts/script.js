@@ -1,7 +1,5 @@
 $(document).ready(function () {
-
     const ROOM_LIST_LIMIT = 5
-
     $('#show-password').click(togglePassword)
     $('#login-btn').click(handleLoginBtnClick)
     $('#register-btn').click(handleRegisterBtnClick)

@@ -18,13 +18,19 @@ $(document).ready(function () {
 
     $('#file-input-btn').click(handleFileInputClick)
 
-    $('#send-msg').click(handleSendMsgClick)
+    $('#send-msg').click(function handleSendMsgClick() {
+        let msg = $('#msg').val()
+        if (msg !== '') {
+            updateSendMessageUI(msg)
+            socket.emit('message', { message: msg, username: window.locals.username, time: getHourMinuteObject(), room })
+        }
+    })
 
     $('#msg').keypress(handleMsgKeypress)
 
     socket.emit('join room', {
         room,
-        username: username
+        username: window.locals.username
     })
     socket.on('server', (payload) => {
         updateGetMessageUI(payload)
@@ -46,19 +52,12 @@ $(document).ready(function () {
 })
 
 
-function handleSendMsgClick() {
-    let msg = $('#msg').val()
-    if (msg !== '') {
-        updateSendMessageUI(msg)
-        socket.emit('message', { message: msg, username: username, time: getHourMinuteObject(), room })
-    }
-}
+
 function handleMsgKeypress(e) {
     if (e.key == 'Enter') {
         $('#send-msg').click()
     }
 }
-username
 
 function getHourMinute() {
     let date = new Date()
