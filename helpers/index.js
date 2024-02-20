@@ -38,8 +38,54 @@ range = (start, stop, step) => {
   return result;
 };
 
+class RoomMap {
+  constructor() {
+    this.rooms = new Map()
+  }
+  hasRoom(room) {
+    return this.rooms.has(room)
+  }
+  addRoom(room) {
+    this.rooms.set(room, [])
+  }
+  addOnlineUser(room, user) {
+    if (!this.hasRoom(room)) {
+      this.addRoom(room)
+    }
+    let users = this.rooms.get(room)
+    if (users.find(u => u.username == user.username)) {
+      return false
+    }
+    users.push(user)
+    this.rooms.set(room, users)
+    return true
+  }
+
+  removeOnlineUser({ socket_id, room }) {
+    if (this.hasRoom(room)) {
+      let users = this.rooms.get(room)
+      users = users.filter(user => user.socket_id != socket_id)
+      if (users.length == 0) {
+        return this.rooms.delete(room)
+      }
+      this.rooms.set(room, users)
+    }
+  }
+
+  getOnlineUsers(room) {
+    if (this.hasRoom(room)) {
+      return this.rooms.get(room).map(r => r.username)
+    }
+    return []
+  }
+  printMap() {
+    return this.rooms
+  }
+}
+
 module.exports = {
   ReS,
   ReE,
   range,
+  RoomMap
 }

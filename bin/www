@@ -32,7 +32,7 @@ const server = http.createServer(app);
 // models.sequelize
 //     .query('SET FOREIGN_KEY_CHECKS = 0', null, { raw: true })
 //     .then(function (results) {
-//         models.sequelize.sync({ force: true });
+//         models.sequelize.sync({ alter: true });
 //     });
 
 models.sequelize.authenticate().then(function () {

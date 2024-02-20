@@ -104,6 +104,7 @@ module.exports.postCreateRoom = async (req, res, next) => {
         const room = await Room.create({
             room_name: name,
             creator_user_id: req.session.user.id,
+            creator_user_name: req.session.user.username,
             access_code,
             slug
         })
@@ -120,13 +121,41 @@ module.exports.postCreateRoom = async (req, res, next) => {
     }
 }
 
+module.exports.getJoinRoom = async (req, res, next) => {
+    try {
+        let { access } = req.params
+        if (!access) return ReE(res, { message: 'Provide room access code' }, 400)
+
+        let room = await Room.findOne({
+            where: {
+                slug: access
+            },
+            force: true
+        })
+
+        if (!room) return ReE(res, { message: 'Invalid room access code' }, 400)
+        if (room.deletedAt) return ReE(res, { message: 'Room no longer exist' }, 400)
+
+        return ReS(res, { message: 'join room'}, {}, 200)
+
+    } catch (err) {
+        console.log(err)
+        return ReE(res, { message: 'something went wrong' }, 400)
+        //res.status(400).json({message:'something went wrong'})
+    }
+}
+
 module.exports.getRoom = async (req, res, next) => {
 
     try {
         const { access } = req.params
+
+        let room = await Room.findOne({ where: { slug: access } })
+        if (!room) return ReE(res, { message: 'Room does not exist' }, 400)
         res.render('chats/room', {
             isAuth: req.session?.user,
-            access
+            access,
+            room_name: room.room_name
         })
 
     } catch (err) {

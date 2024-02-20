@@ -73,6 +73,7 @@ module.exports.postLogin = async (req, res, next) => {
         }, process.env.JWT_SECRET)
 
         res.cookie('auth', token, { maxAge: process.env.JWT_EXPIRATION })
+        res.cookie('username', user.username, { maxAge: process.env.JWT_EXPIRATION })
         return ReS(res, 'Login successfull', {}, 200)
 
     } catch (err) {
@@ -105,6 +106,7 @@ module.exports.getAfterLoginGoogle = async (req, res, next) => {
         }, process.env.JWT_SECRET)
 
         res.cookie('auth', token, { maxAge: process.env.JWT_EXPIRATION })
+        res.cookie('username', req.user.username, { maxAge: process.env.JWT_EXPIRATION })
         return res.redirect('/')
 
     } catch (err) {

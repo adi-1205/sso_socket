@@ -7,11 +7,11 @@ $(document).ready(function () {
     $('#register-btn').click(handleRegisterBtnClick)
     $('#open-create-room-form-btn').click(handleOpenRoomBtnClick)
     $('#create-room-btn').click(handleCreateRoomBtnClick)
+    $('#join-room-btn').click(handleJoinRoomBtnClick)
     $(document).on('click', '.copy-access-code', handleCopyAccessCodeClick)
     $(document).on('click', '.remove-room-btns', handleRemoveRoomBtnClick)
     $(document).on('click', '.pagination a', handlePaginationLinkClick)
     paginationController();
-
 })
 
 function togglePassword() {
@@ -90,6 +90,25 @@ async function handleCreateRoomBtnClick() {
             disposableMessage('.room-name-error', res.message)
         }
     }
+}
+async function handleJoinRoomBtnClick() {
+    try {
+        let access = $('#join-room-name-inp').val()
+        if (access) {
+            let data = await ajx('/chats/room/join/' + access, { method: 'get' })
+            if (data.success) {
+                console.log('DATA:',data);
+                window.location.href = `/chats/room/${access}`
+            }
+        }
+    } catch (err) {
+        console.log(err);
+        let { responseJSON: res } = err
+        if (err.status == 400) {
+            disposableMessage('.room-name-error', res.message)
+        }
+    }
+
 }
 function handleCopyAccessCodeClick() {
     let code = $(this).data('text')

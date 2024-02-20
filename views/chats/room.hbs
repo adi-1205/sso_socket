@@ -7,47 +7,14 @@
                     <h3 class="text-center"><i class="fa-regular fa-comments"></i> active</h3>
                 </div>
                 <div class="card-body online-user-list bg-light">
-                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
-                        Aditya
-                    </div>
-                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
-                        Aditya
-                    </div>
-                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
-                        Aditya
-                    </div>
-                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
-                        Aditya
-                    </div>
-                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
-                        Aditya
-                    </div>
-                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
-                        Aditya
-                    </div>
-                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
-                        Aditya
-                    </div>
-                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
-                        Aditya
-                    </div>
-                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
-                        Aditya
-                    </div>
-                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
-                        Aditya
-                    </div>
-                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
-                        Aditya
-                    </div>
-                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
-                        Aditya
-                    </div>
-                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
-                        Aditya
-                    </div>
-                    <div class="online-user rounded p-3 mb-3 me-2 bg-white">
-                        Aditya
+                    <div class="row">
+                        {{!-- <div class="online-user col-md-4">
+                            <div class="online-user-profile">
+                                A
+                            </div>
+                            <div class="online-user-name text-center">Gunjan Vyas</div>
+                        </div> --}}
+
                     </div>
                 </div>
 
@@ -56,33 +23,37 @@
         <div class="col-md-9 h-100 p-0">
             <div class="card h-100 border overflow-hidden message-area-wrapper">
                 <div class="card-header bg-dark text-white">
-                    <h3 class="fw-normal">Room: {{access}}</h3>
+                    <h3 class="fw-normal">{{room_name}}</h3>
                 </div>
-                {{!-- <div class="background">
-                    <img src="/images/chat-back-2.jpg" alt="">
-                    <div class="overlay"></div>
-                </div> --}}
                 <div class="card-body message-area bg-light">
-
                     <div class="messages">
-                        <p class="message other">
+                        {{!-- <p class="message other">
+                            <span class="message-by">Aditya</span>
                             <span class="message-text">
                                 illum hic quidem.
                             </span>
                             <span class="message-time">20:03</span>
-                        </p>
-                        <p class="message me">
+                        </p> --}}
+                        {{!-- <p class="message p-2 bg-info-subtle text-center rounded-1">
+                            User joined
+                        </p> --}}
+                        {{!-- <p class="message me">
+                            <span class="message-by">You</span>
                             <span class="text-start message-text">
                                 heyy, doing great
                             </span>
                             <span class="message-time">22:30</span>
-                        </p>
+                        </p> --}}
                     </div>
                 </div>
                 <div class="card-footer bg-white border-0 p-0">
+                    <input type="file" class="form-control" id="file-input" style="display: none;">
                     <div class="input-group">
-                        <input type="text" class="form-control rounded-0 danger-inp" id="msg" rows="1">
-                        <button class="input-group-text btn bg-primary-subtle btn-lg rounded-0" id="send-msg">Send</button>
+                        <button class="input-group-text btn btn-danger btn-lg rounded-0" id="file-input-btn">
+                            <i class="fa-solid fa-image"></i>
+                        </button>
+                        <input type="text" class="form-control rounded-0" id="msg" rows="1" style="">
+                        <button class="input-group-text btn btn-danger btn-lg rounded-0" id="send-msg">Send</button>
                     </div>
                 </div>
             </div>
