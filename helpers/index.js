@@ -48,15 +48,16 @@ class RoomMap {
   addRoom(room) {
     this.rooms.set(room, [])
   }
-  addOnlineUser(room, user) {
+  addOnlineUser({ room, socket }) {
+    let user = socket.locals.user
     if (!this.hasRoom(room)) {
       this.addRoom(room)
     }
     let users = this.rooms.get(room)
-    if (users.find(u => u.username == user.username)) {
+    if (users.find(u => u.id == user.id)) {
       return false
     }
-    users.push(user)
+    users.push({ id: user.id, username: user.username, socket_id: socket.id })
     this.rooms.set(room, users)
     return true
   }
@@ -74,7 +75,7 @@ class RoomMap {
 
   getOnlineUsers(room) {
     if (this.hasRoom(room)) {
-      return this.rooms.get(room).map(r => r.username)
+      return this.rooms.get(room).map(u => { return { username: u.username, user_id: u.id } })
     }
     return []
   }
@@ -83,9 +84,18 @@ class RoomMap {
   }
 }
 
+function timeTOChatTime(time) {
+  let tm = new Date(time)
+  return {
+    hrs: tm.getHours(),
+    mins: tm.getMinutes()
+  }
+}
+
 module.exports = {
   ReS,
   ReE,
   range,
-  RoomMap
+  RoomMap,
+  timeTOChatTime
 }

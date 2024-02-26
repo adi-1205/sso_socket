@@ -10,6 +10,7 @@ $(document).ready(function () {
     $(document).on('click', '.remove-room-btns', handleRemoveRoomBtnClick)
     $(document).on('click', '.pagination a', handlePaginationLinkClick)
     paginationController();
+    textShort()
 })
 
 function togglePassword() {
@@ -76,6 +77,7 @@ async function handleCreateRoomBtnClick() {
             let result = $(updateData).prop('outerHTML')
             $('#room-list').replaceWith(result)
             paginationController($(result).data('count'))
+            textShort()
         } else {
             console.log('else');
             disposableMessage('.room-name-error', 'Room name can not be empty')
@@ -95,7 +97,7 @@ async function handleJoinRoomBtnClick() {
         if (access) {
             let data = await ajx('/chats/room/join/' + access, { method: 'get' })
             if (data.success) {
-                console.log('DATA:',data);
+                console.log('DATA:', data);
                 window.location.href = `/chats/room/${access}`
             }
         }
@@ -194,7 +196,6 @@ const getFormData = (...fields) => {
     let formData = {}
     for (field of fields)
         formData[field] = $(`#${field}`).val()
-
     return formData
 }
 const validateRegistartion = () => {
@@ -315,5 +316,18 @@ function paginationController(totalCount = false) {
             </li>`
 
         $('#pagination-area').html('').html(pageHtml)
+    }
+}
+
+function textShort() {
+    let smallTexts = $('.last-msg-small-text')
+    for (let s of smallTexts) {
+        let text = s.innerHTML
+        let styles = getComputedStyle(s)
+        let fontSize = styles.fontSize
+        let width = $(s).parent().width()
+        let chars = Math.floor((parseInt(width)) / parseInt(fontSize))
+        text = text.slice(0, chars)
+        s.innerHTML = text + '...'
     }
 }

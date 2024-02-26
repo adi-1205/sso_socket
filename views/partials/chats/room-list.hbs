@@ -3,9 +3,9 @@
     <tr>
         <td>{{this.index}}</td>
         <td>{{this.name}}</td>
-        <td>
+        <td class="fit">
             <div class="d-flex justify-content-between pe-4 me-4">
-                <div>
+                <div class="me-4">
                     {{this.access_code}}
                 </div>
                 <div class="copy-access-code" data-text="{{this.access_code}}">
@@ -13,11 +13,16 @@
                 </div>
             </div>
         </td>
+        <td class="last-msg">
+            <p class="last-msg-small-text"> <b>{{last_message_by}}</b> {{this.last_message}}</p>
+            <p class="last-msg-text">{{this.last_message}}</p>
+        </td>
         <td scope="row" class="fit">
-            <a class="btn btn-danger  rounded-pill" href="/chats/room/{{this.access_code}}"><i class="fa-regular fa-comment"></i> Go to
+            <a class="btn btn-danger  rounded-pill" href="/chats/room/{{this.access_code}}"><i
+                    class="fa-regular fa-comment"></i> Go to
                 Room</a>
-            <button class="btn btn-outline-dark rounded-pill remove-room-btns"
-                data-access-code="{{this.access_code}}"> Remove</button>
+            <button class="btn btn-outline-dark rounded-pill remove-room-btns" data-access-code="{{this.access_code}}">
+                Remove</button>
         </td>
     </tr>
     {{/each}}

@@ -29,6 +29,25 @@
     height: 100%;
     object-fit: cover;
 }
+.last-msg{
+    position: relative;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.last-msg-text{
+    position: absolute;
+    background: white;
+    padding: 1em;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.32);
+    transform: scale(0);
+    transition: all 200ms ease-in-out;
+    transform-origin:  0% 0%;
+    z-index:4;
+}
+.last-msg:hover .last-msg-text{
+    transform: scale(1);
+}
+
 .message-area {
     overflow-x: hidden !important;
     overflow-y: auto !important;
@@ -63,6 +82,10 @@
     padding: .5em 1em;
     border-radius: 3px;
 }
+
+.message .message-text img{
+    width: 300px;
+}
 .other .message-text {
     background-color: rgb(42, 40, 40);
     color: rgb(240, 240, 240);
@@ -88,7 +111,37 @@
     right: 0px;
 }
 
-
+#tooltip{
+    background: #ffffff;
+    border-radius: 5px;
+    display: none;
+    z-index:6;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.299);
+    /* position: absolute; */
+    top: 50%;
+    left: 50%;
+    
+}
+#tooltip .tooltip-header{
+    background-color: #24282c;
+    color: white;
+    padding: .45em;
+    font-weight: normal !important;
+}
+#tooltip .unames{
+    padding: .5em 1em;
+    height: 440px;
+    overflow: auto;
+}
+#tooltip .uname{
+    color: #2c2c2c;
+    padding-left: 20px;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.178);
+    padding: .5em;
+}
+#tooltip .not-seen{
+    color: #979797;
+}
 
 .dot {
     height: 15px;
@@ -199,7 +252,6 @@
     overflow: hidden;
     overflow-y: scroll;
 }
-
 
 
 *::-webkit-scrollbar {

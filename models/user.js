@@ -21,6 +21,11 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: 'cascade',
             hooks: true,
         });
+        this.hasMany(models.Chat, {
+            foreignKey: "sender_id",
+            onDelete: 'cascade',
+            hooks: true,
+        });
     }
     return User
 }

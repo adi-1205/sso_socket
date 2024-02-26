@@ -1,6 +1,6 @@
-const { check } = require('express-validator');
+const { body } = require('express-validator');
 
-const usernameValidation = check('username')
+const usernameValidation = body('username')
     .exists()
     .withMessage('Username is required')
     .notEmpty()
@@ -11,7 +11,7 @@ const usernameValidation = check('username')
     .matches(/^[a-zA-Z0-9_]*$/)
     .withMessage('Username can only contain letters, numbers, and underscores');
 
-const emailValidation = check('email')
+const emailValidation = body('email')
     .exists()
     .withMessage('Email is required')
     .notEmpty()
@@ -20,7 +20,7 @@ const emailValidation = check('email')
     .isEmail()
     .withMessage('Email must be valid');
 
-const passwordValidation = check('password')
+const passwordValidation = body('password')
     .exists()
     .withMessage('Password is required')
     .notEmpty()

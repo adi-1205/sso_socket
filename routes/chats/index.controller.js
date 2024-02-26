@@ -2,6 +2,7 @@ const crypto = require('node:crypto');
 const slugify = require('slugify');
 
 const Room = require('../../models').Room;
+const Chat = require('../../models').Chat;
 const { ReE, range } = require('../../helpers/index');
 
 module.exports.getChat = (req, res, next) => {
@@ -33,8 +34,12 @@ module.exports.getRooms = async (req, res, next) => {
             },
             offset,
             limit,
-            raw: true,
-            order: [['createdAt', 'desc']]
+            order: [['createdAt', 'desc']],
+            include: [{
+                model: Chat,
+                order: [['createdAt', 'DESC']],
+                limit: 1,
+            }],
         })
 
         let roomRange = range(offset + 1, offset + 1 + rooms.length + 1)
@@ -43,7 +48,9 @@ module.exports.getRooms = async (req, res, next) => {
             return {
                 name: room.room_name,
                 access_code: room.slug,
-                index: roomRange[index]
+                index: roomRange[index],
+                last_message: room.Chats.length ? room.Chats[0].message : 'No Messages',
+                last_message_by: room.Chats.length ? (room.Chats[0].sender_id != req.session?.user.id ? room.Chats[0].sender_username + ':' : 'You:') : ''
             }
         })
 
@@ -74,12 +81,15 @@ module.exports.deleteRoom = async (req, res, next) => {
 
         const { access } = req.body
 
-        await Room.destroy({
+        let room = await Room.findOne({
             where: {
                 slug: access,
                 creator_user_id: req.session?.user.id
             }
         })
+
+        await Chat.destroy({ where: { room_id: room.id } })
+        await room.destroy()
 
         return ReS(res, 'Room deleted', {}, 200)
 
@@ -136,7 +146,7 @@ module.exports.getJoinRoom = async (req, res, next) => {
         if (!room) return ReE(res, { message: 'Invalid room access code' }, 400)
         if (room.deletedAt) return ReE(res, { message: 'Room no longer exist' }, 400)
 
-        return ReS(res, { message: 'join room'}, {}, 200)
+        return ReS(res, { message: 'join room' }, {}, 200)
 
     } catch (err) {
         console.log(err)

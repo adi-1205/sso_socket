@@ -19,7 +19,7 @@ module.exports.postRegister = async (req, res, next) => {
     try {
         let { errors } = validationResult(req)
         if (errors.length) {
-            ReE(res, errors[0].msg, 400)
+            return ReE(res, errors[0].msg, 400)
         }
 
         let email = req.body.email.trim()
@@ -41,16 +41,16 @@ module.exports.postRegister = async (req, res, next) => {
 
     } catch (err) {
         console.log(err)
-        ReE(res, { message: 'something went wrong' }, 400)
+        return ReE(res, { message: 'something went wrong' }, 400)
     }
 }
 
 module.exports.getLogin = (req, res, next) => {
     try {
-        res.render('auth/login')
+        return res.render('auth/login')
     } catch (err) {
         console.log(err)
-        ReE(res, { message: 'something went wrong' }, 400)
+        return ReE(res, { message: 'something went wrong' }, 400)
     }
 }
 
@@ -60,12 +60,12 @@ module.exports.postLogin = async (req, res, next) => {
 
         const { email, password } = req.body
 
-        if (!email || !password) ReE(res, { message: 'Provide all fields' }, 400)
+        if (!email || !password) return ReE(res, { message: 'Provide all fields' }, 400)
         let user = await User.findOne({ where: { email: email.trim() } })
 
         if (!user) return ReE(res, { message: 'Invalid email or password' }, 400)
 
-        if (!await bcrypt.compare(password, user.password)) ReE(res, { message: 'Invalid email or password' }, 400)
+        if (!await bcrypt.compare(password, user.password)) return ReE(res, { message: 'Invalid email or password' }, 400)
 
         const token = await jwt.sign({
             id: user.id,
@@ -73,12 +73,12 @@ module.exports.postLogin = async (req, res, next) => {
         }, process.env.JWT_SECRET)
 
         res.cookie('auth', token, { maxAge: process.env.JWT_EXPIRATION })
-        res.cookie('username', user.username, { maxAge: process.env.JWT_EXPIRATION })
+        res.cookie('user', JSON.stringify({ username: user.username, uid: user.id }), { maxAge: process.env.JWT_EXPIRATION })
         return ReS(res, 'Login successfull', {}, 200)
 
     } catch (err) {
         console.log(err)
-        ReE(res, { message: 'something went wrong' }, 400)
+        return ReE(res, { message: 'something went wrong' }, 400)
     }
 }
 
@@ -106,7 +106,7 @@ module.exports.getAfterLoginGoogle = async (req, res, next) => {
         }, process.env.JWT_SECRET)
 
         res.cookie('auth', token, { maxAge: process.env.JWT_EXPIRATION })
-        res.cookie('username', req.user.username, { maxAge: process.env.JWT_EXPIRATION })
+        res.cookie('user', JSON.stringify({ username: req.user.username, uid: req.user.id }), { maxAge: process.env.JWT_EXPIRATION })
         return res.redirect('/')
 
     } catch (err) {
